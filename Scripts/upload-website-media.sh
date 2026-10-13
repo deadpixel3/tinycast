@@ -1,5 +1,5 @@
 #!/bin/bash
-# Mirror website/media/ into the R2 bucket behind cdn.tinycast.dev. Usage: upload-website-media.sh
+# Mirror website/media/ into the R2 bucket behind cdn.tinycast.dev.
 set -euo pipefail
 
 BUCKET="tinycast-cdn"
@@ -15,7 +15,7 @@ fi
 cd "$WEBSITE"
 for FILE in "${FILES[@]}"; do
     NAME="$(basename "$FILE")"
-    # An unknown extension is a hard stop: R2 would serve it as octet-stream and the tag would break.
+    # An unknown extension is a hard stop: R2 would serve it as octet-stream, breaking the tag.
     case "$NAME" in
         *.mp4) TYPE="video/mp4" ;;
         *.webm) TYPE="video/webm" ;;
